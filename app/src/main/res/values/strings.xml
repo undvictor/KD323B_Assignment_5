@@ -7,7 +7,7 @@
     <string name="drawer_closed">Drawer closed</string>
 
     <string name="popular_movies_fragment">Popular</string>
-    <string name="my_fragment">Victors movies</string>
+    <string name="my_fragment">Victor/s movies</string>
 
 
     <!--    You must add an item here for it to show up in the navigation drawer.
