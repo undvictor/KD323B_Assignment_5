@@ -149,6 +149,7 @@ public class Fragment_my extends Fragment implements Callback<List<RootApiRespon
         mMovieMap.put("slugline", movie.getSlugline());
         mMovieMap.put("poster", movie.getPoster());
         mMovieMap.put("fanart", movie.getFanArt());
+        mMovieMap.put("overview",movie.getOverview());
 
         mRef.child(mCurrentClickedMovie).updateChildren(mMovieMap, new Firebase.CompletionListener() {
             @Override

@@ -14,6 +14,7 @@ public class Movie {
     private String fanArt;
     private String overview;
     private String tagline;
+
     private int year;
 
     @ParcelConstructor
@@ -25,6 +26,7 @@ public class Movie {
         this.year = builder.year;
         this.overview = builder.overview;
         this.tagline = builder.tagline;
+
     }
 
     public String getTitle() {

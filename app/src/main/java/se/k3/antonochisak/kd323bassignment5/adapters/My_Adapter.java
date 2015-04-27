@@ -1,5 +1,6 @@
 package se.k3.antonochisak.kd323bassignment5.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,16 @@ public class My_Adapter extends BaseAdapter
             view.setTag(holder);
             TextView movie_text = (TextView)view.findViewById(R.id.movie_text);
             movie_text.setText(mMovies.get(position).getTitle());
+
+            TextView movie_description = (TextView)view.findViewById(R.id.movie_description);
+            if(mMovies.get(position).getTagline() != null ||mMovies.get(position).getTagline() != "" ) {
+                movie_description.setText(mMovies.get(position).getOverview());
+            }else{
+                movie_description.setText("blopp");
+
+            }
+
+           Log.i("tagline", "movies "+mMovies.get(position).getOverview());
         } else {
             holder = (ViewHolder) view.getTag();
         }
