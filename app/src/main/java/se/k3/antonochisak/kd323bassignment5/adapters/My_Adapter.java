@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -24,7 +25,8 @@ public class My_Adapter extends BaseAdapter
 {
     ArrayList<Movie> mMovies;
     LayoutInflater mLayoutInflater;
-
+    private int mItemWidth, mItemHeight, mMargin;
+    TextView movie_text;
 
     public My_Adapter(ArrayList<Movie> mMovies, LayoutInflater mLayoutInflater) {
         this.mMovies = mMovies;
@@ -37,6 +39,11 @@ public class My_Adapter extends BaseAdapter
 
         public ViewHolder(View view) {
             ButterKnife.inject(this, view);
+            int screenWidth = StaticHelpers.getScreenWidth(view.getContext());
+
+            mItemWidth = (screenWidth / 2);
+            mItemHeight = (int) ((double) mItemWidth / 0.677);
+            mMargin = StaticHelpers.getPixelsFromDp(view.getContext(), 2);
         }
     }
 
@@ -44,10 +51,14 @@ public class My_Adapter extends BaseAdapter
     public View getView(int position, View view, ViewGroup viewGroup) {
         ViewHolder holder;
 
+
+
         if (view == null) {
             view = mLayoutInflater.inflate(R.layout.list_movies, viewGroup, false);
             holder = new ViewHolder(view);
             view.setTag(holder);
+            TextView movie_text = (TextView)view.findViewById(R.id.movie_text);
+            movie_text.setText(mMovies.get(position).getTitle());
         } else {
             holder = (ViewHolder) view.getTag();
         }
@@ -55,8 +66,10 @@ public class My_Adapter extends BaseAdapter
         // Load pictures with picasso
         Picasso.with(view.getContext())
                 .load(mMovies.get(position).getPoster())
-                //.resize(mItemWidth, mItemHeight)
+                .resize(mItemWidth, mItemHeight)
                 .into(holder.poster_pic);
+
+
         return view;
     }
 
