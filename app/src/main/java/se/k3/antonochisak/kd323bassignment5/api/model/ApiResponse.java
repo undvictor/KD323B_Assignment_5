@@ -32,6 +32,6 @@ public class ApiResponse {
     @SerializedName("tagline")
     public String tagline;
 
-    @SerializedName("imdb")
-    public String imdb;
+    @SerializedName("votes")
+    public int likes;
 }

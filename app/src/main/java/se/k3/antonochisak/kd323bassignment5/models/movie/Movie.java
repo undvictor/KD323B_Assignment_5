@@ -14,8 +14,9 @@ public class Movie {
     private String fanArt;
     private String overview;
     private String tagline;
-
     private int year;
+    private int likes;
+
 
     @ParcelConstructor
     private Movie(Builder builder) {
@@ -26,6 +27,7 @@ public class Movie {
         this.year = builder.year;
         this.overview = builder.overview;
         this.tagline = builder.tagline;
+        this.likes = builder.likes;
 
     }
 
@@ -57,9 +59,13 @@ public class Movie {
         return tagline;
     }
 
+    public int getLikes() {
+        return likes;
+    }
+
     public static class Builder {
         private String title, slugline, poster, fanArt, overview, tagline;
-        private int year;
+        private int year, likes;
 
         public Builder title(String title) {
             this.title = title;
@@ -95,6 +101,12 @@ public class Movie {
             this.tagline = tagline;
             return this;
         }
+
+        public Builder likes(int likes) {
+            this.likes = likes;
+            return this;
+        }
+
 
         public Movie build() {
             return new Movie(this);

@@ -190,6 +190,7 @@ public class Fragment_my extends Fragment implements Callback<List<RootApiRespon
                     .poster(r.apiResponse.image.getPoster().getMediumPoster())
                     .fanArt(r.apiResponse.image.getFanArt().getFullFanArt())
                     .year(r.apiResponse.year)
+                    .likes(r.apiResponse.likes)
                     .overview(r.apiResponse.overview)
                     .tagline(r.apiResponse.tagline)
                     .build();

@@ -26,6 +26,7 @@ public class My_Adapter extends BaseAdapter
 {
     ArrayList<Movie> mMovies;
     LayoutInflater mLayoutInflater;
+
     private int mItemWidth, mItemHeight, mMargin;
 
     public My_Adapter(ArrayList<Movie> mMovies, LayoutInflater mLayoutInflater) {
@@ -65,14 +66,22 @@ public class My_Adapter extends BaseAdapter
             //  .resize(mItemWidth, mItemHeight)
                 .into(holder.poster_pic);
 
+
+        //For title
         TextView movie_text = (TextView)view.findViewById(R.id.movie_text);
 
-        movie_text.setText(mMovies.get(position).getTitle());
+        //For years
+        String years = String.valueOf(mMovies.get(position).getYear());
+        //settext
+        movie_text.setText(mMovies.get(position).getTitle() + " (" + years + ")");
 
+        //likes
         TextView movie_description = (TextView)view.findViewById(R.id.movie_description);
-        movie_description.setText(mMovies.get(position).getOverview());
+        String likes = String.valueOf(mMovies.get(position).getLikes());
+        //settext
+        movie_description.setText(likes + " likes");
 
-        Log.i("tagline", "movies "+mMovies.get(position).getOverview());
+        Log.i("tagline", "movies "+mMovies.get(position).getYear());
 
 
         return view;
