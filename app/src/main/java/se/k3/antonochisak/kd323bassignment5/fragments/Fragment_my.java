@@ -58,7 +58,7 @@ public class Fragment_my extends Fragment implements Callback<List<RootApiRespon
     Firebase mRef;
 
     String mCurrentClickedMovie = "";
-
+    String mActiveMovie = "";
     //Count down-timer & bool to check if it is finished
     CountDownTimer mVoteTimer;
     boolean mIsVoteTimerRunning = false;
@@ -107,8 +107,7 @@ public class Fragment_my extends Fragment implements Callback<List<RootApiRespon
         super.onViewCreated(view, savedInstanceState);
 
         //listener
-        mRestClient.getApiService().getTrending("images", this);
-      //  mRestClient2.getApiService().getTrending();
+        mRestClient.getApiService().getTrending("full,images", this);
 
         mProgressBar.setVisibility(View.VISIBLE);
         initVoteTimer();
@@ -149,7 +148,6 @@ public class Fragment_my extends Fragment implements Callback<List<RootApiRespon
         mMovieMap.put("slugline", movie.getSlugline());
         mMovieMap.put("poster", movie.getPoster());
         mMovieMap.put("fanart", movie.getFanArt());
-        mMovieMap.put("overview",movie.getOverview());
 
         mRef.child(mCurrentClickedMovie).updateChildren(mMovieMap, new Firebase.CompletionListener() {
             @Override
@@ -192,6 +190,8 @@ public class Fragment_my extends Fragment implements Callback<List<RootApiRespon
                     .poster(r.apiResponse.image.getPoster().getMediumPoster())
                     .fanArt(r.apiResponse.image.getFanArt().getFullFanArt())
                     .year(r.apiResponse.year)
+                    .overview(r.apiResponse.overview)
+                    .tagline(r.apiResponse.tagline)
                     .build();
             Log.i("Success", "Added item!" + r.apiResponse.title);
             mMovies.add(movie);

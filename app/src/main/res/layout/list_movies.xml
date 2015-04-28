@@ -15,28 +15,19 @@
         android:layout_marginBottom="10dp"/>
 
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_weight="1"
-        android:layout_gravity="top|center"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:orientation="vertical"
-            android:id="@+id/linearLayout1"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center_vertical|center_horizontal">
-
-        <TextView
+    <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:typeface="monospace"
             android:textSize="16dp"
             android:textStyle="bold"
-            android:textColor="#ffff2026"
+            android:textColor="#000"
             android:id="@+id/movie_text"
             />
 
@@ -49,8 +40,6 @@
             android:textColor="#000"
             android:id="@+id/movie_description"
             />
-
-        </LinearLayout>
-        </ScrollView>
+    </LinearLayout>
 
 </LinearLayout>

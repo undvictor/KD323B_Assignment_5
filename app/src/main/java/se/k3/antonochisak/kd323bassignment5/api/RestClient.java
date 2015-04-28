@@ -17,6 +17,7 @@ import static se.k3.antonochisak.kd323bassignment5.helpers.StaticHelpers.API_URL
  * Created by isak on 2015-04-24.
  */
 
+
 public class RestClient {
 
     private ApiService apiService;
