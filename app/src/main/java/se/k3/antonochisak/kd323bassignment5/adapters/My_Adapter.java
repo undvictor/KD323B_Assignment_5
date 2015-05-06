@@ -34,9 +34,16 @@ public class My_Adapter extends BaseAdapter
         this.mLayoutInflater = mLayoutInflater;
     }
 
-    class ViewHolder{
+    static class ViewHolder{
     @InjectView(R.id.poster_pic)
       ImageView poster_pic;
+
+        //For title
+        @InjectView(R.id.movie_text)
+        TextView movie_text;
+
+        @InjectView(R.id.movie_description)
+        TextView movie_description;
 
         public ViewHolder(View view) {
             ButterKnife.inject(this, view);
@@ -67,21 +74,18 @@ public class My_Adapter extends BaseAdapter
                 .into(holder.poster_pic);
 
 
-        //For title
-        TextView movie_text = (TextView)view.findViewById(R.id.movie_text);
 
         //For years
         String years = String.valueOf(mMovies.get(position).getYear());
         //settext
-        movie_text.setText(mMovies.get(position).getTitle() + " (" + years + ")");
+        holder.movie_text.setText(mMovies.get(position).getTitle() + " (" + years + ")");
 
         //likes
-        TextView movie_description = (TextView)view.findViewById(R.id.movie_description);
         String likes = String.valueOf(mMovies.get(position).getLikes());
         //settext
-        movie_description.setText(likes + " likes");
+        holder.movie_description.setText(likes + " likes");
 
-        Log.i("tagline", "movies "+mMovies.get(position).getYear());
+
 
 
         return view;
